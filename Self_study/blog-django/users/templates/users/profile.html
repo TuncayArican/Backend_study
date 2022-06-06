@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %} 
+{% load django_bootstrap5 %}
+<h2>Update Form</h2>
+
+{% if request.user.is_authenticated %}
+
+
+
+
+
+<img src="{{ user.profile.profile_pic.url }}" alt="Avatar" class="avatar">
+{% comment %} üstte src yolu belirtilirken modeldeki imaj dosyasının sonuna .url eklenir
+
+ alttaki formdan resim çekmek istiyorsak enctype="multipart/form-data" eklenir
+ {% endcomment %}
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form user_form %}
+  {% bootstrap_form profile_form %}
+
+
+  {% bootstrap_button button_type="submit" content="Update" %}
+  {% bootstrap_button button_type="reset" content="Reset" %} 
+</form>
+{% endif %}
+
+
+
+{% endblock content %}
